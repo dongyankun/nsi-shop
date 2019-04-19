@@ -83,7 +83,8 @@ export default {
                         username:email,
                         userTurename:name,
                         userOrganization:campany,
-                        wechatid:openId
+                        wechatid:openId,
+                        'unionId':localStorage.getItem('unionid')
                     }).then(res=>{
                         if(res.code===0){
                             this.$message({

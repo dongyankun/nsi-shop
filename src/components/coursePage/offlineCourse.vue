@@ -153,7 +153,8 @@ export default {
         toBuy(){
             // 判断用户信息是否补全
             judgeuserInfo({
-                wechatId:localStorage.getItem('openId')
+                wechatId:localStorage.getItem('openId'),
+                'unionId':localStorage.getItem('unionid')
             }).then(res=>{
                 // 0成功 1失败
                 if(res.code===0){

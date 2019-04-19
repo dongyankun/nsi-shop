@@ -99,7 +99,8 @@ export default {
                 method:'get',
                 url:'/order/get_order_list.do',
                 params:{
-                    'wechatId':localStorage.getItem('openId')
+                    'wechatId':localStorage.getItem('openId'),
+                    'unionId':localStorage.getItem('unionid')
                 }
             }).then((res)=>{
                 this.loading=false

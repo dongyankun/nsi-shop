@@ -52,7 +52,8 @@ export default {
                 url:'/order/get_order_list.do',
                 params:{
                     // 'wechatId':'123123'
-                    'wechatId':localStorage.getItem('openId')
+                    'wechatId':localStorage.getItem('openId'),
+                    'unionId':localStorage.getItem('unionid')
                 }
             }).then((res)=>{
                 this.loading=false
