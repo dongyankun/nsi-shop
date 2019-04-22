@@ -101,6 +101,8 @@ export default {
         clear(){
             localStorage.removeItem('vuex')
             localStorage.removeItem('cartId')
+            localStorage.removeItem('openId')
+            localStorage.removeItem('unionid')
             this.$message({
                 message: '已清空缓存',
                 type: 'success'
