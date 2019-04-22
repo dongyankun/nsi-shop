@@ -65,7 +65,8 @@ export default {
                     url:'/order/find_order_item.do',
                     params:{
                         wechatId:localStorage.getItem('openId'),
-                        orderNo:listId
+                        orderNo:listId,
+                        'unionId':localStorage.getItem('unionid'),
                     }
                 }).then((res)=>{
                     resolve(res)
@@ -82,7 +83,8 @@ export default {
                     url:'/order/find_logistics_info.do',
                     params:{
                         orderNo:listId,
-                        logisticCode:logisticCode
+                        logisticCode:logisticCode,
+                        'unionId':localStorage.getItem('unionid'),
                     }
                 }).then(res=>{
                     this.traces=res.data.traces.reverse()
@@ -97,7 +99,8 @@ export default {
                 params:{
                     // wechatId:'123123',
                     wechatId:localStorage.getItem('openId'),
-                    orderNo:listId
+                    orderNo:listId,
+                    'unionId':localStorage.getItem('unionid'),
                 }
             }).then((res)=>{
                 this.itemDesc=res.data.data
@@ -109,7 +112,8 @@ export default {
                     url:'/order/find_logistics_info.do',
                     params:{
                         orderNo:listId,
-                        logisticCode:res.data.data.shippingCode
+                        logisticCode:res.data.data.shippingCode,
+                        'unionId':localStorage.getItem('unionid'),
                     }
                 }).then((res)=>{
                     // console.log(res.data)
@@ -138,7 +142,8 @@ export default {
                 params:{
                     // wechatId:'123123',
                     wechatId:localStorage.getItem('openId'),
-                    orderNo:ordernum
+                    orderNo:ordernum,
+                    'unionId':localStorage.getItem('unionid')
                 }
             }).then((res)=>{
                 this.$message({

@@ -115,7 +115,8 @@ export default {
                 url:'/order/find_order_count.do',
                 params:{
                     wechatId:localStorage.getItem('openId'),
-                    productType:'书店'
+                    productType:'书店',
+                    'unionId':localStorage.getItem('unionid'),
                 }
             }).then((res)=>{
                 this.orderState=res.data.data
@@ -124,7 +125,8 @@ export default {
         getMyCourse(){
             myCourse({
                wechatId:localStorage.getItem('openId'),
-               productType:'课程'
+               productType:'课程',
+               'unionId':localStorage.getItem('unionid'),
             }).then(res=>{
                 // console.log(res.data)
                 for(let i=0;i<res.data.length;i++){

@@ -85,7 +85,8 @@ export default {
                 params:{
                     // wechatId:'123123',
                     wechatId:localStorage.getItem('openId'),
-                    orderNo:ordernum
+                    orderNo:ordernum,
+                    'unionId':localStorage.getItem('unionid')
                 }
             }).then((res)=>{
                 this.$message({

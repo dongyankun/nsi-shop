@@ -30,7 +30,8 @@ export default {
                 url:'/order/find_logistics_info.do',
                 params:{
                     orderNo:localStorage.getItem('orderNumshippingCode'),
-                    logisticCode:localStorage.getItem('shippingCode')
+                    logisticCode:localStorage.getItem('shippingCode'),
+                    'unionId':localStorage.getItem('unionid'),
                 }
             }).then((res)=>{
                 // console.log(res.data)

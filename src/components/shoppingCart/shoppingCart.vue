@@ -88,7 +88,8 @@ export default {
         },
         getAddressInfo(){
             getAddress({
-                wechatId:localStorage.getItem('openId')
+                wechatId:localStorage.getItem('openId'),
+                'unionId':localStorage.getItem('unionid'),
                 // wechatId:'oCUylv0A1A2hO9JNaCNhVom8guLE'
             }).then(res=>{
                 this.loading=false
@@ -199,6 +200,7 @@ export default {
                             let totalfee=res.data
                             // 创建购物车订单
                             createCardOrder({
+                                'unionId':localStorage.getItem('unionid'),
                                 wechatId:localStorage.getItem('openId'),
                                 goodsId:localStorage.getItem('cartId'),
                                 productName:"购物车",

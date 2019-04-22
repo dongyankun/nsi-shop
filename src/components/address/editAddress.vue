@@ -75,6 +75,7 @@ export default {
                     });
                 }else{
                     editAddress({
+                        'unionId':localStorage.getItem('unionid'),
                         wechatid:openId,
                         receivename:name,
                         receivephone:phoneVal,
@@ -100,7 +101,8 @@ export default {
     },
     created(){
         getAddress({
-            wechatId:localStorage.getItem('openId')
+            wechatId:localStorage.getItem('openId'),
+            'unionId':localStorage.getItem('unionid'),
         }).then(res=>{
             this.loading=false
             // 0成功 1失败

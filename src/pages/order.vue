@@ -94,6 +94,7 @@ export default {
                 let buyerMessage=this.$refs.buyerMessage.value
                 let num=this.num
                 const data = new URLSearchParams();
+                data.append('unionId', localStorage.getItem('unionid'));
                 data.append('wechatId', openId);
                 data.append('goodsId', goodsId);
                 data.append('quantity', num);

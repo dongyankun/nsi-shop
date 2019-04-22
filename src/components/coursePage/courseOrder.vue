@@ -108,6 +108,7 @@ export default {
             let courseId=localStorage.getItem('courseId')
             let courseTitle=localStorage.getItem('courseTitle')
             createCourseOrder({
+                'unionId':localStorage.getItem('unionid'),
                 'wechatId': openId,
                 'goodsId': courseId,
                 'quantity':'1',

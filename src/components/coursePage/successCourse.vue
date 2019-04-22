@@ -46,7 +46,8 @@ export default {
     methods:{
         getOrderList(){
             myCourse({
-                'wechatId':localStorage.getItem('openId')
+                'wechatId':localStorage.getItem('openId'),
+                'unionId':localStorage.getItem('unionid'),
             }).then(res=>{
                 this.loading=false
                 this.orderCode=res.code
@@ -82,7 +83,8 @@ export default {
                 params:{
                     // wechatId:'123123',
                     wechatId:localStorage.getItem('openId'),
-                    orderNo:ordernum
+                    orderNo:ordernum,
+                    'unionId':localStorage.getItem('unionid')
                 }
             }).then((res)=>{
                 this.$message({

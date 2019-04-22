@@ -74,6 +74,7 @@ export default {
                     });
                 }else{
                     createAddress({
+                        'unionId':localStorage.getItem('unionid'),
                         wechatid:openId,
                         receivename:name,
                         receivephone:phoneVal,

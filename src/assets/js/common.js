@@ -32,7 +32,8 @@ export function getUsrInfo(url) {
     let args = getQueryStringArgs()
     let code = decodeURIComponent(args['code'])
     localStorage.setItem('wxCode', code)
-
+    console.log('---------------------------')
+    console.log(localStorage.getItem('wxCode'))
     if (storage.getItem('openId')) {} else {
         if (localStorage.getItem('wxCode') == 'undefined') {
             window.location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx37e5ddff7dc5282e&redirect_uri=" + url + "&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"

@@ -123,7 +123,8 @@ export default {
                     url:'/order/find_order_item.do',
                     params:{
                         wechatId:localStorage.getItem('openId'),
-                        orderNo:item.orderNo
+                        orderNo:item.orderNo,
+                        'unionId':localStorage.getItem('unionid'),
                     }
                 }).then((res)=>{
                     resolve(res)
@@ -139,7 +140,8 @@ export default {
                     url:'/order/find_logistics_info.do',
                     params:{
                         orderNo:item.orderNo,
-                        logisticCode:logisticCode
+                        logisticCode:logisticCode,
+                        'unionId':localStorage.getItem('unionid'),
                     }
                 }).then(res=>{
                     // this.traces=res.data.traces.reverse()
