@@ -103,6 +103,7 @@ export default {
             localStorage.removeItem('cartId')
             localStorage.removeItem('openId')
             localStorage.removeItem('unionid')
+            localStorage.removeItem('wxCode')
             this.$message({
                 message: '已清空缓存',
                 type: 'success'

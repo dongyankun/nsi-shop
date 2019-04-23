@@ -5,11 +5,11 @@
               <!-- <div class="swiper-slide" v-for="(bannerInfos,item) in bannerList" :key="item" v-if="item<4"> -->
               <div class="swiper-slide">
                   <!-- <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> -->
-                  <img src="../../assets/shopBanner.jpg" alt="">
+                  <img src="../../assets/shopBanner.jpg" @click="goBook" alt="">
               </div>
               <div class="swiper-slide">
                   <!-- <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> -->
-                  <img src="../../assets/banner02.jpg" alt="">
+                  <img src="../../assets/banner02.jpg" @click="goCourse" alt="">
               </div>
           </div>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -28,6 +28,12 @@ export default {
         }
     },
     methods:{
+        goBook(){
+            this.$router.push({path:'/list'})
+        },
+        goCourse(){
+            this.$router.push({path:'/course'})
+        },
         getBannerInfo(){
             getHomeBanner({
                 'type':'官网首页banner'

@@ -1,6 +1,6 @@
 <template>
     <div class="detailCourse-com" ref="bg" >
-        <div class="videoBox">
+        <div class="videoBox" ref="coverContent">
             <!-- <video src="https://nsi-class-video.oss-cn-zhangjiakou.aliyuncs.com/class/test.mp4" class="play" controls ref="play" controlslist="nodownload"></video> -->
             <video webkit-playsinline="true" :src="getUrl" class="play" :class="{'zindex9':isPlay}" controls ref="play" controlslist="nodownload"></video>
             <!-- <video src="https://nsi.oss-cn-zhangjiakou.aliyuncs.com/test/yearVideo/xxs.mp4" class="play" :class="{'zindex9':isPlay}" controls ref="play" controlslist="nodownload"></video> -->
@@ -216,25 +216,33 @@ export default {
             })
         },
         handleScroll () {
-            let linkTop=Math.floor((window.innerWidth/16*9))
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-            var searchTop = document.querySelector('#searchBar').offsetTop
-            if(scrollTop>0){
-                searchTop = linkTop - Number(scrollTop);
-                if(searchTop<=0){
-                // document.querySelector('#searchBar').style.opacity="0.9"
-                    document.querySelector('#searchBar').style.top ='0px';
-                    this.isScroll=true
-                    // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
-                }else{
-                    document.querySelector('#searchBar').style.top = searchTop+'px';
-                    // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
-                }
+            
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            // console.log(scrollTop)
+            // console.log(this.$refs.coverContent.style.height)
+            if(scrollTop>220){
+                this.isScroll=true
             }else{
-                // document.querySelector('#searchBar').style.opacity="1"
                 this.isScroll=false
-                document.querySelector('#searchBar').style.top = linkTop+'px';
             }
+            //console.log(scrollTop)
+            // var searchTop = document.querySelector('#searchBar').offsetTop
+            // if(scrollTop>0){
+            //     searchTop = linkTop - Number(scrollTop);
+            //     if(searchTop<=0){
+            //     // document.querySelector('#searchBar').style.opacity="0.9"
+            //         document.querySelector('#searchBar').style.top ='0px';
+            //         this.isScroll=true
+            //         // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
+            //     }else{
+            //         document.querySelector('#searchBar').style.top = searchTop+'px';
+            //         // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
+            //     }
+            // }else{
+            //     // document.querySelector('#searchBar').style.opacity="1"
+            //     this.isScroll=false
+            //     document.querySelector('#searchBar').style.top = linkTop+'px';
+            // }
         },
     },
     mounted(){
@@ -254,9 +262,13 @@ export default {
 </script>
 
 <style lang="scss">
+
     .detailCourse-com{
         padding-bottom: 30px;
         position: relative;
+        #searchBar{
+            background:#fff;
+        }
         .videoBox{
             position: relative;
             .zindex9{
@@ -306,15 +318,16 @@ export default {
         }
         .addShadow{
             box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.4);
+            position:fixed;
+            top:0;
         }
         .link{
             display: flex;
             width: 100%;
             justify-content: space-around;
             // border-bottom: 7px solid #f7f7f7;
-            position: fixed;
+
             background-color: #FFF;
-            width: 100%;
             // transition: all .3s ease-in-out;
             div{
                 width: 50%;
