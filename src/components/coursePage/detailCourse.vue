@@ -320,15 +320,13 @@ export default {
             box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.4);
             position:fixed;
             top:0;
+            z-index:999;
         }
         .link{
             display: flex;
             width: 100%;
             justify-content: space-around;
-            // border-bottom: 7px solid #f7f7f7;
-
             background-color: #FFF;
-            // transition: all .3s ease-in-out;
             div{
                 width: 50%;
                 text-align: center;
@@ -357,7 +355,7 @@ export default {
         }
         .courseContent{
             border-top: 7px solid #f7f7f7;
-            margin-top: 40px;
+            
         }
         .back{
             position: absolute;

@@ -213,25 +213,33 @@ export default {
             })
         },
         handleScroll () {
-            let linkTop=Math.floor((window.innerWidth/16*9))
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
-            var searchTop = document.querySelector('#searchBar').offsetTop
-            if(scrollTop>0){
-                searchTop = linkTop - Number(scrollTop);
-                if(searchTop<=0){
-                // document.querySelector('#searchBar').style.opacity="0.9"
-                    document.querySelector('#searchBar').style.top ='0px';
-                    this.isScroll=true
-                    // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
-                }else{
-                    document.querySelector('#searchBar').style.top = searchTop+'px';
-                    // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
-                }
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            // console.log(scrollTop)
+            // console.log(this.$refs.coverContent.style.height)
+            if(scrollTop>220){
+                this.isScroll=true
             }else{
-                // document.querySelector('#searchBar').style.opacity="1"
                 this.isScroll=false
-                document.querySelector('#searchBar').style.top = linkTop+'px';
             }
+            // let linkTop=Math.floor((window.innerWidth/16*9))
+            // var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+            // var searchTop = document.querySelector('#searchBar').offsetTop
+            // if(scrollTop>0){
+            //     searchTop = linkTop - Number(scrollTop);
+            //     if(searchTop<=0){
+            //     // document.querySelector('#searchBar').style.opacity="0.9"
+            //         document.querySelector('#searchBar').style.top ='0px';
+            //         this.isScroll=true
+            //         // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
+            //     }else{
+            //         document.querySelector('#searchBar').style.top = searchTop+'px';
+            //         // document.querySelector('#searchBar').style.boxShadow ="0 1px 10px rgba(0, 0, 0, 0.4);";
+            //     }
+            // }else{
+            //     // document.querySelector('#searchBar').style.opacity="1"
+            //     this.isScroll=false
+            //     document.querySelector('#searchBar').style.top = linkTop+'px';
+            // }
         },
     },
     mounted(){
@@ -254,6 +262,9 @@ export default {
     .detailCourse-com{
         padding-bottom: 30px;
         position: relative;
+        #searchBar{
+            background:#fff;
+        }
         .videoBox{
             position: relative;
             .zindex9{
@@ -303,13 +314,15 @@ export default {
         }
         .addShadow{
             box-shadow: -1px 1px 10px rgba(0, 0, 0, 0.4);
+            position:fixed;
+            top:0;
+            z-index:999;
         }
         .link{
             display: flex;
             width: 100%;
             justify-content: space-around;
             // border-bottom: 7px solid #f7f7f7;
-            position: fixed;
             background-color: #FFF;
             width: 100%;
             // transition: all .3s ease-in-out;
@@ -340,8 +353,7 @@ export default {
             }
         }
         .courseContent{
-            // border-bottom: 7px solid #f7f7f7;
-            // margin-top: 40px;
+            
         }
         .back{
             position: absolute;
