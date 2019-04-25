@@ -7,6 +7,7 @@
                 <div class="row bookList" v-for="(book,index) in bookList" :key="index" @click="toDetail(book)">
                     <div class="col-xs-4">
                         <div class="picBox">
+                            <span v-show="book.listType!='录播课'" :class="{listType2:book.listType=='线下课'}" class="listType">{{book.listType}}</span>
                             <img :src="book.listImg" alt="" class="img-responsive">
                             <!-- <img src="../../assets/course.jpg" alt="" class="img-responsive"> -->
                             <span class="iconfont icon-bofang listlogo"></span>
@@ -44,6 +45,10 @@ export default {
         toDetail(item){
             // console.log(item)
             if(item.listPrice!=0){
+                if(item.listType!='录播课'){
+                    window.location.href=item.listTheme
+                    return;
+                }
                 localStorage.setItem('courseId',item.listId)
                 localStorage.setItem('courseImg',item.listImg)
                 localStorage.setItem('coursePrice',item.listPrice)
@@ -116,6 +121,7 @@ export default {
         ._v-content{
           padding-bottom: 45px;
         }
+
         .pl0{
             padding-left: 0;
         }
@@ -138,7 +144,22 @@ export default {
             margin-bottom: 10px;
         }
         .picBox{
+
             position: relative;
+            .listType{
+                position:absolute;
+                left:0;
+                top:0;
+                background:#ff6618;
+                color:#fff;
+                padding:2px 5px 0 5px;
+                font-size:12px;
+                border-radius: 4px 0 5px 0;
+                border:0;
+            }
+            .listType2{
+                background:#67C23A;
+            }
             .listlogo{
                 position: absolute;
                 right: 8px;
