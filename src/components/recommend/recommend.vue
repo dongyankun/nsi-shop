@@ -1,21 +1,15 @@
 <template>
 <div class="searchList-com" ref="list">
         <div class="recommendTitle">推荐书籍</div>
-        <div class="container-fluid" style="padding-bottom:15px">
-            <div class="row bookList" v-for="(book,index) in bookList" :key="index" @click="toDetail(book.id)">
-                <div class="col-xs-4">
+        <div class="container-fluid" style="padding-bottom:15px;display:flex;flex-wrap:wrap;">
+            <div class="bookList" v-for="(book,index) in bookList" :key="index" @click="toDetail(book.id)">
+                <div class="inbookList">
                     <div class="picBox">
                         <img :src="book.goodsImg" alt="" class="img-responsive">
                     </div>
+                    <p class="name">{{book.goodsName}}</p>
                 </div>
-                <div class="col-xs-8 pl0">
-                    <div class="infoBox">
-                        <!-- <p class="englishName">{{book.englishName}}</p> -->
-                        <p class="name">{{book.goodsName}}</p>
-                        <p class="author">{{book.goodsAuthor}}</p>
-                        <p class="bookInfo">{{book.goodsDescribe}}</p>
-                    </div>
-                </div>
+                
             </div>
         </div>
 </div>
@@ -80,6 +74,7 @@ export default {
 </script>
 
 <style lang="scss" scope>
+
     .searchList-com{
         // padding-bottom: 45px;
         margin-top:30px;
@@ -88,7 +83,7 @@ export default {
           padding-bottom: 45px;
         }
         .recommendTitle{
-            padding:20px 20px;
+            padding:10px 20px;
             font-size:20px;
         }
         .pl0{
@@ -111,6 +106,15 @@ export default {
         }
         .bookList{
             margin-bottom: 20px;
+            width: 50%;
+            padding:15px;
+            .name{
+                font-size: 19px;
+                color: #232323;
+                font-weight: 200;
+                margin:5px;
+            }
+            
         }
         .infoBox{
             min-height: 155px;
@@ -132,11 +136,7 @@ export default {
                 // font-weight: 600;
                 font-family: -webkit-pictograph,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             }
-            .name{
-                font-size: 19px;
-                color: #232323;
-                font-weight: 600;
-            }
+            
             .author{
                 font-size: 14px;
                 color: rgb(141, 141, 141);
