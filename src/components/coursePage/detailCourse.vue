@@ -33,18 +33,20 @@
         <!-- <div class="test">
             {{testmsg}}
         </div> -->
+        <recommend-course></recommend-course>
     </div>
 </template>
 
 <script>
 import Bus from '@/assets/js/Bus'
+import recommendCourse from '../../components/recommend/recommendCourse.vue'
 import complementInfoCom from '@/components/coursePage/complementInfo'
 import {judgeuserInfo,checkCoursePrivilege,getCourseDetail,getBigCourseDetail,checkOpenIdCourseIdPrivilege} from '@/api/api'
 import wxShareInit from '@/assets/js/weChatShare.js';
 import {getUsrInfo} from '@/assets/js/common.js'
 export default {
     components:{
-        complementInfoCom
+        complementInfoCom,recommendCourse
     },
     data(){
         return{

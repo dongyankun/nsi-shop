@@ -48,17 +48,19 @@
             </div>
         </div>
         <service-detail></service-detail>
+        <recommend></recommend>
     </div>
 </template>
 
 <script>
 import serviceDetail from '../pages/serviceDetail'
+import recommend from '../components/recommend/recommend.vue'
 import wxShareInit from '@/assets/js/weChatShare.js';
 import {Debounce,getUsrInfo} from '@/assets/js/common'
 import {createCartId} from '@/api/api'
 export default {
     components:{
-        serviceDetail
+        serviceDetail,recommend
     },
     data() {
         return {

@@ -80,3 +80,5 @@ export const getCartList = p => get('/order/get_order_cart_list.do', p)
 
 // 创建发票
 export const createInvoice = p => post('/Invoice/ShopInvoiceCreate.do', p)
+// 推荐图书或书籍
+export const recommmendBookOrCourse = p => post('/ShopRecommend/getRecommend.do', p)
