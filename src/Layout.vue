@@ -15,7 +15,7 @@
                 </router-link>
                 <router-link to="/course" tag="li">
                     <p class="iconBox text-center"><span class="iconfont icon-shipinbofangyingpian"></span></p>
-                    <p class="iconName text-center">课堂</p>
+                    <p class="iconName text-center">课程</p>
                 </router-link>
                 <router-link to="/mine" tag="li">
                     <p class="iconBox text-center"><span class="iconfont icon-gerenzhongxin1"></span></p>

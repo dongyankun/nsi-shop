@@ -2,14 +2,15 @@
     <div class="banner-com">
         <div class="swiper-container indexBannerM" id="indexBannerM">
           <div class="swiper-wrapper">
-              <!-- <div class="swiper-slide" v-for="(bannerInfos,item) in bannerList" :key="item" v-if="item<4"> -->
-              <div class="swiper-slide">
-                  <!-- <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> -->
+              <div class="swiper-slide" v-for="(bannerInfos,item) in bannerList" :key="item">
+                <img :src="bannerInfos.content01" @click="goCourse(bannerInfos.content02)" alt="">
+              <!--<div class="swiper-slide">
+                   <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> 
                   <img src="../../assets/shopBanner.jpg" @click="goBook" alt="">
               </div>
               <div class="swiper-slide">
-                  <!-- <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> -->
-                  <img src="../../assets/banner02.jpg" @click="goCourse" alt="">
+                  <img :src="bannerInfos.content03" alt="" class="img-responsive" @click="toDetail(bannerInfos.content02)"> 
+                  <img src="../../assets/banner02.jpg" @click="goCourse" alt="">-->
               </div>
           </div>
           <div class="swiper-pagination" slot="pagination"></div>
@@ -31,32 +32,38 @@ export default {
         goBook(){
             this.$router.push({path:'/list'})
         },
-        goCourse(){
-            this.$router.push({path:'/course'})
+        goCourse(data){
+            console.log(data)
+            window.location.href=data
+            //this.$router.push({path:'/course'})
         },
         getBannerInfo(){
-            getHomeBanner({
-                'type':'官网首页banner'
-            }).then((res)=>{
-                this.bannerList=res.data
-                // console.log(res.data)
-                this.$nextTick(()=>{
-                    this.swiperInit()
-                })
-            })
-            // this.axios({
-            //     method:"get",
-            //     url:"/manager/official/list.do",
-            //     // url:"https://data.xinxueshuo.cn/nsi-1.0/manager/official/list.do",
-            //     params:{
-            //             'type':'官网首页banner'
-            //         }
+            // getHomeBanner({
+            //     'type':'官网首页banner'
             // }).then((res)=>{
-            //     this.bannerList=res.data.data
+            //     this.bannerList=res.data
+            //     // console.log(res.data)
             //     this.$nextTick(()=>{
             //         this.swiperInit()
             //     })
             // })
+            this.axios({
+                method:"get",
+                url:"/manager/configure/get_configure_list.do?typeName=ShopBanner",
+            }).then((res)=>{
+                this.bannerList=[]
+                for (var i = 0; i < res.data.data.length; i++) {
+                    if(res.data.data[i].content01!='0'){
+                        console.log(res.data.data[i].content01)
+                        this.bannerList.push(res.data.data[i])
+                    }
+                    
+                };
+                console.log(this.bannerList)
+                this.$nextTick(()=>{
+                    this.swiperInit()
+                })
+            })
         },
         swiperInit(){
             const self=this
