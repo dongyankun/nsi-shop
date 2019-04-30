@@ -106,7 +106,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .courseList-com{
         margin-top:30px;
            border-top: 20px solid #f7f5f5;

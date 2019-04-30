@@ -2,8 +2,8 @@
 <div class="searchList-com" ref="list">
         <div class="recommendTitle">推荐书籍</div>
         <div class="container-fluid" style="padding-bottom:0px;display:flex;flex-wrap:wrap;">
-            <div class="bookList" v-for="(book,index) in bookList" :key="index" @click="toDetail(book.id)">
-                <div class="inbookList">
+            <div class="bookList" v-for="(book,index) in bookList" :key="index">
+                <div @click="toDetail(book.id)" class="inbookList">
                     <div class="picBox">
                         <img :src="book.goodsImg" alt="" class="img-responsive">
                     </div>
@@ -31,6 +31,8 @@ export default {
         toDetail(id){
             // let routeData =this.$router.resolve({name:"detail",params:{id:id}})
             // window.location.href=routeData.href
+            //this.$router.push({path:'/detailPage/'+id}); 
+           
             let href='https://www.xinxueshuo.cn/nsi-shop/dist/index.html#/detailPage/'+id
             window.location.href=href
             localStorage.setItem("isShare",false)
@@ -64,6 +66,14 @@ export default {
             }
         },
     },
+    watch: {
+      '$route' (to, from) {
+            if(to.params.id!=from.params.id){
+                this.getData()
+                window.reload()
+            }
+       }
+    },
     created(){
         this.getData()
     },
@@ -73,7 +83,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss" scoped>
 
     .searchList-com{
         // padding-bottom: 45px;
@@ -109,12 +119,14 @@ export default {
             width: 33.333%;
             padding:15px 15px 0 15px;
             .name{
-                padding:10px 0px;
+                padding:10px 0px 0 0;
                 text-align:center;
                 font-size: 12px;
                 color: #333;
                 font-weight: 200;
                 margin:5px 0;
+                max-height:61px;
+                overflow:hidden;
             }
             
         }

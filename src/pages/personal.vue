@@ -6,9 +6,9 @@
                 <div class="personBox">
                     <img :src="headimgurl" alt="" class="headImg">
                     <p class="userName">{{nickname}}</p>
-                    <div v-show="isSmallRoutineStatus" class="vipBox" @click="toVip()">
+                    <!-- <div v-show="isSmallRoutineStatus" class="vipBox" @click="toVip()">
                         <span class="iconfont icon-VIPhuiyuan vipLogo"></span><span class="text">会员<span class="iconfont icon-iconfonticonfonti2copycopy vipMore"></span></span>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

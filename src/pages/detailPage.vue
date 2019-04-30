@@ -170,7 +170,13 @@ export default {
     },
     created(){
         this.fetchDate()
-
+    },
+    watch: {
+      '$route' (to, from) {
+            if(to.params.id!=from.params.id){
+                this.fetchDate()
+            }
+       }
     },
     mounted(){
         localStorage.setItem('courseId',this.$route.params.id)
