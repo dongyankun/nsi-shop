@@ -13,7 +13,7 @@
                     <p class="iconBox text-center"><span class="iconfont icon-liebiao1"></span></p>
                     <p class="iconName text-center">书库</p>
                 </router-link>
-                <router-link to="/course" tag="li">
+                <router-link to="/course" v-show="isSmallRoutineStatus" tag="li">
                     <p class="iconBox text-center"><span class="iconfont icon-shipinbofangyingpian"></span></p>
                     <p class="iconName text-center">课程</p>
                 </router-link>
@@ -28,8 +28,20 @@
 
 <script>
 import wx from 'weixin-js-sdk'
+import {isSmallRoutine} from './assets/js/common.js'
 export default {
     name:'app',
+    data(){
+        return {
+            isSmallRoutineStatus:false
+        }
+    },
+    created(){
+        let that=this
+        isSmallRoutine().then(function(data){
+            that.isSmallRoutineStatus=data
+        })
+    },
     mounted(){
         if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
             // wx.miniProgram.getEnv(res=>{

@@ -6,7 +6,7 @@
             <!-- banner -->
             <home-banner/>
             <!-- scrollNews -->
-            <div class="scrollBox">
+            <div v-show="isSmallRoutineStatus" class="scrollBox">
                 <div class="text">教育<br/>资讯</div>
                 <scroll-news class="scrollNews"/>
             </div>
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="bookListContent">
+                 <div v-show="isSmallRoutineStatus" class="bookListContent">
                     <h4 class="title">精品课程</h4>    
                     <div class="courseContentRow" v-for="(item,index) in courseList" :key="index"  @click="toCourseDetail(item.listId)">
                         <div class="row">
@@ -81,6 +81,7 @@ import scrollNews from '@/components/homePage/scrollNews';
 import search from '@/components/homePage/search'
 import wxShareInit from '@/assets/js/weChatShare.js';
 import {getBookPopList,getCourseList} from '@/api/api'
+import {isSmallRoutine} from '../assets/js/common.js'
 export default {
     data() {
         return {
@@ -90,6 +91,7 @@ export default {
             bookPopList:[],
             bookSaleList:[],
             bookCommandList:[],
+            isSmallRoutineStatus:false,
             wxShareInfo:{
                 title:"新学说 | 国际教育研究院",
                 imgUrl:"https://data.xinxueshuo.cn/upImage/upInstitutionImg/100062/100062-logo.jpg",
@@ -174,6 +176,10 @@ export default {
         }
     },
     created(){
+        let that=this
+        isSmallRoutine().then(function(data){
+            that.isSmallRoutineStatus=data
+        })
         setTimeout(wxShareInit.wxReady(this.wxShareInfo),500)
         const data = new URLSearchParams();
         this.courseIndex()

@@ -31,6 +31,7 @@
                 </div>
             </div>
         </div>
+        <recommend></recommend>
         <div class="content" v-html="book.goodsInfo"></div>
         <div class="buyBox">
             <!-- <span class="buyBtn price">售价：<span>￥{{book.goodsPrice}}.00</span><em class="free">免运费</em></span> -->
@@ -48,7 +49,7 @@
             </div>
         </div>
         <service-detail></service-detail>
-        <recommend></recommend>
+        
     </div>
 </template>
 
@@ -293,6 +294,7 @@ export default {
             }
         }
         .content{
+            margin-bottom:30px;
             img{
                 display: inline-block;
                 max-width: 100%;

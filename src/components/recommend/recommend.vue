@@ -1,7 +1,7 @@
 <template>
 <div class="searchList-com" ref="list">
         <div class="recommendTitle">推荐书籍</div>
-        <div class="container-fluid" style="padding-bottom:15px;display:flex;flex-wrap:wrap;">
+        <div class="container-fluid" style="padding-bottom:0px;display:flex;flex-wrap:wrap;">
             <div class="bookList" v-for="(book,index) in bookList" :key="index" @click="toDetail(book.id)">
                 <div class="inbookList">
                     <div class="picBox">
@@ -77,10 +77,10 @@ export default {
 
     .searchList-com{
         // padding-bottom: 45px;
-        margin-top:30px;
-           border-top: 20px solid #f7f5f5;
+        margin-top:10px;
+           border-bottom: 20px solid #f7f5f5;
         ._v-content{
-          padding-bottom: 45px;
+          padding-bottom: 0px;
         }
         .recommendTitle{
             padding:10px 20px;
@@ -105,14 +105,16 @@ export default {
             padding-top: 70px;
         }
         .bookList{
-            margin-bottom: 20px;
-            width: 50%;
-            padding:15px;
+            
+            width: 33.333%;
+            padding:15px 15px 0 15px;
             .name{
-                font-size: 19px;
-                color: #232323;
+                padding:10px 0px;
+                text-align:center;
+                font-size: 12px;
+                color: #333;
                 font-weight: 200;
-                margin:5px;
+                margin:5px 0;
             }
             
         }

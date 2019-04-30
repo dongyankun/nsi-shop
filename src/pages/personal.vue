@@ -6,7 +6,7 @@
                 <div class="personBox">
                     <img :src="headimgurl" alt="" class="headImg">
                     <p class="userName">{{nickname}}</p>
-                    <div class="vipBox" @click="toVip()">
+                    <div v-show="isSmallRoutineStatus" class="vipBox" @click="toVip()">
                         <span class="iconfont icon-VIPhuiyuan vipLogo"></span><span class="text">会员<span class="iconfont icon-iconfonticonfonti2copycopy vipMore"></span></span>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
         </div>
 
          <!-- 课程 -->
-        <div class="container-fluid mt15">
+        <div v-show="isSmallRoutineStatus" class="container-fluid mt15">
             <div class="myOrderBox">
                 <h4 class="myTitle">我的课程<router-link to="/mycourse" tag="div" class="moreOrder">更多<span class="iconfont icon-iconfonticonfonti2copycopy"></span></router-link></h4>
                 <div class="orderBox courseContent">
@@ -86,7 +86,7 @@
 
 <script>
 import {myCourse} from '@/api/api'
-import {getUsrInfo} from '@/assets/js/common.js'
+import {getUsrInfo,isSmallRoutine} from '@/assets/js/common.js'
 export default {
     data() {
         return {
@@ -94,7 +94,8 @@ export default {
             nickname:'',
             hasNoAddress:true,
             orderState:{},
-            courseList:[]
+            courseList:[],
+            isSmallRoutineStatus:false
         }
     },
     methods:{
@@ -148,6 +149,10 @@ export default {
         },
     },
     created(){
+        let that=this
+        isSmallRoutine().then(function(data){
+            that.isSmallRoutineStatus=data
+        })
         // this.getUsrInfo()
     },
     beforeMount(){

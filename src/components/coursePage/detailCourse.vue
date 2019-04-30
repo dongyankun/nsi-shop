@@ -33,7 +33,8 @@
         <!-- <div class="test">
             {{testmsg}}
         </div> -->
-        <recommend-course></recommend-course>
+        <!-- 课程推荐 -->
+        <!-- <recommend-course></recommend-course> -->
     </div>
 </template>
 

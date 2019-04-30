@@ -91,7 +91,7 @@ export const Debounce = (fn, t) => {
 };
 
 /** 
- * 判断当前是否微信小程序环境
+ * 判断当前是否微信小程序环境,因该是废弃,不敢乱删
  * @return {boolean}
  */
 
@@ -119,5 +119,26 @@ export function miniProPayInfo(body, totalFee, outTradeNo) {
     console.log(path)
     wx.miniProgram.navigateTo({
         url: path
+    })
+}
+//判断是不是小程序环境,异步操作
+export function isSmallRoutine(){
+    return new Promise(function(resolve,reject){
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') { //判断是否是微信环境
+            //微信环境
+            wx.miniProgram.getEnv((res) => {
+                if (res.miniprogram) {
+                    //小程序环境
+                    resolve(false)
+                } else {
+                    //非小程序环境
+                    resolve(true)
+                }
+            })
+        } else {
+            //不是微信环境
+            resolve(true)
+        }
     })
 }
