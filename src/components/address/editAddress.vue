@@ -24,6 +24,7 @@
 import chooseAddress from '@/components/address/chooseAddress';
 import {editAddress,getAddress} from '@/api/api';
 import {Debounce} from '@/assets/js/common'
+import {getUsrInfo} from '@/assets/js/common'
 export default {
     data() {
         return {
@@ -100,6 +101,7 @@ export default {
         })
     },
     created(){
+        getUsrInfo('https%3a%2f%2fwww.xinxueshuo.cn%2fnsi-shop%2fdist%2findex.html%23%2feditAddress')
         getAddress({
             wechatId:localStorage.getItem('openId'),
             'unionId':localStorage.getItem('unionid'),

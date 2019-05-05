@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import {getUsrInfo} from '@/assets/js/common'
 export default {
     data() {
         return {
@@ -63,6 +64,9 @@ export default {
         editAddress(){
             this.$router.push({path:'/editAddress'})
         }
+    },
+    mounted(){
+        getUsrInfo('https%3a%2f%2fwww.xinxueshuo.cn%2fnsi-shop%2fdist%2findex.html%23%2fmanageAddress')
     }
 }
 </script>
